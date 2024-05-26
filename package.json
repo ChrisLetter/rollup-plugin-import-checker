@@ -1,0 +1,35 @@
+{
+  "name": "rollup-plugin-import-checker",
+  "version": "0.0.0",
+  "description": "A Rollup plugin that warns or throws an error when a specific import is found",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "lint": "eslint .",
+    "format": "prettier . --write",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "precommit": "npm run lint && npm run format",
+    "prepare": "husky"
+  },
+  "keywords": [
+    "vite-plugin",
+    "rollup-plugin",
+    "import",
+    "modules"
+  ],
+  "author": "Christian Letter",
+  "license": "MIT",
+  "lint-staged": {
+    "*.{js,ts}": "npm run precommit"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.12",
+    "eslint": "^9.3.0",
+    "eslint-config-prettier": "^9.1.0",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.5",
+    "prettier": "3.2.5",
+    "typescript": "^5.4.5",
+    "typescript-eslint": "^8.0.0-alpha.10"
+  }
+}
