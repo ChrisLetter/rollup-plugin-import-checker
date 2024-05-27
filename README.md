@@ -2,7 +2,9 @@
 
 This plugin will check if a specified import is being used in the code, allowing you to create a custom message and stop the build (if specified). This is useful in large organizations when you want to enforce rules on the dependencies being used.
 
-## Example of usage in vite
+![Validator](img/example.png)
+
+## Vite Example
 
 ```javascript
 import importChecker from 'rollup-plugin-import-checker';
@@ -14,11 +16,14 @@ export default defineConfig({
       severity: "error",
       match: [{ pattern: "src/**", options: { nocase: true } }],
       message: (source, importer) => `You are importing ${source} from ${importer}, please use the custom router instead`,
-      throwError: true
+      throwError: false
     }])
   ]
 })
 ```
+
+
+
 
 The plugin accepts an array of objects with the following properties:
 
