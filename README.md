@@ -1,0 +1,1 @@
+# Rollup Plugin Import Checker

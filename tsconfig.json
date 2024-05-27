@@ -10,7 +10,9 @@
     "strict": true,
 
     /* Modules */
-    "types": ["node"],
+    "types": ["node", "vitest/globals"],
+    "moduleResolution": "nodenext",
+    "module": "NodeNext",
 
     /* Emit */
     "declaration": true,
@@ -25,6 +27,6 @@
     /* Language and Environment */
     "target": "ES2022"
   },
-  "include": ["src/**/*", "tests/**/*"],
+  "include": ["src/**/*"],
   "exclude": ["**/node_modules"]
 }

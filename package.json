@@ -2,14 +2,21 @@
   "name": "rollup-plugin-import-checker",
   "version": "0.0.0",
   "description": "A Rollup plugin that warns or throws an error when a specific import is found",
-  "main": "index.js",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "type": "module",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "lint": "eslint .",
+    "build": "rimraf dist && tsc",
+    "lint": "eslint src tests",
     "format": "prettier . --write",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "precommit": "npm run lint && npm run format",
-    "prepare": "husky"
+    "prepare": "husky",
+    "test": "vitest --run",
+    "test:watch": "vitest --run"
   },
   "keywords": [
     "vite-plugin",
@@ -22,14 +29,24 @@
   "lint-staged": {
     "*.{js,ts}": "npm run precommit"
   },
+  "dependencies": {
+    "consola": "^3.2.3",
+    "minimatch": "^9.0.4"
+  },
+  "peerDependencies": {
+    "rollup": "^4.0.0"
+  },
   "devDependencies": {
     "@types/node": "^20.12.12",
     "eslint": "^9.3.0",
     "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-vitest": "^0.5.4",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.5",
-    "prettier": "3.2.5",
+    "prettier": "^3.2.5",
+    "rimraf": "^5.0.7",
     "typescript": "^5.4.5",
-    "typescript-eslint": "^8.0.0-alpha.10"
+    "typescript-eslint": "^8.0.0-alpha.10",
+    "vitest": "^1.6.0"
   }
 }
