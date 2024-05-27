@@ -1,6 +1,6 @@
 {
   "name": "rollup-plugin-import-checker",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A Rollup plugin that warns or throws an error when a specific import is found",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

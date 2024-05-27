@@ -2,7 +2,7 @@
 
 This plugin will check if a specified import is being used in the code, allowing you to create a custom message and stop the build (if specified). This is useful in large organizations when you want to enforce rules on the dependencies being used.
 
-![Validator](img/example.png)
+![example](https://github.com/ChrisLetter/rollup-plugin-import-checker/blob/main/img/example.png?raw=true)
 
 ## Vite Example
 
