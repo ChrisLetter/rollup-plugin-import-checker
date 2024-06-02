@@ -7,23 +7,23 @@ This plugin will check if a specified import is being used in the code, allowing
 ## Vite Example
 
 ```javascript
-import importChecker from 'rollup-plugin-import-checker';
+import importChecker from "rollup-plugin-import-checker";
 
 export default defineConfig({
   plugins: [
-    rollupPluginImportChecker([{
-      source: "vue-router",
-      severity: "error",
-      match: [{ pattern: "src/**", options: { nocase: true } }],
-      message: (source, importer) => `You are importing ${source} from ${importer}, please use the custom router instead`,
-      throwError: false
-    }])
-  ]
-})
+    rollupPluginImportChecker([
+      {
+        source: "vue-router",
+        severity: "error",
+        match: [{ pattern: "src/**", options: { nocase: true } }],
+        message: (source, importer) =>
+          `You are importing ${source} from ${importer}, please use the custom router instead`,
+        throwError: false,
+      },
+    ]),
+  ],
+});
 ```
-
-
-
 
 The plugin accepts an array of objects with the following properties:
 
