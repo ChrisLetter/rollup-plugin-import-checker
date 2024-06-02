@@ -41,6 +41,26 @@ describe("Rollup Plugin Import Checker", () => {
       );
     });
 
+    it("should warn also when an import to a subfolder is detected", async () => {
+      writeFileSync(
+        targetFile,
+        genExport("consola/dist/index.mjs", ["consola"]),
+      );
+
+      await rollup({
+        input: targetFile,
+        plugins: [
+          nodeResolve(),
+          rollupPluginImportChecker([{ source: "consola" }]),
+        ],
+      });
+
+      expect(consola.warn).toHaveBeenCalledOnce();
+      expect(consola.warn).toHaveBeenCalledWith(
+        `An import for "consola/dist/index.mjs" was detected from "${targetFile}"`,
+      );
+    });
+
     it("should now warn when a target import is not detected", async () => {
       writeFileSync(targetFile, genExport("consola", ["consola"]));
 

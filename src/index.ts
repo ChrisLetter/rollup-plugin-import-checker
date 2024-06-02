@@ -40,11 +40,25 @@ export default function rollupPluginImportChecker(
     resolveId: {
       order: "pre",
       handler(source, importer) {
-        if (!importsToMonitor.includes(source)) {
-          return;
-        }
+        let option: ImportCheckerOptions | undefined;
 
-        const option = config[source] as ImportCheckerOptions;
+        // checking for subdirectories imports (e.g. import "my-package/subdir/file")
+        if (source.includes("/") && !source.includes("node_modules")) {
+          const subDirectory = importsToMonitor.find((importToMonitor) =>
+            source.includes(importToMonitor),
+          );
+          if (subDirectory) {
+            option = config[subDirectory];
+          }
+          // checking for direct imports (e.g. import "my-package")
+        } else {
+          if (importsToMonitor.includes(source)) {
+            option = config[source];
+          }
+        }
+        if (!option) {
+          return null;
+        }
 
         // removing process.cwd() from the importer to make it nicer to read in the logs
         const relativeImporter = importer
